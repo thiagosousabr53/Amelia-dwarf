@@ -1,0 +1,58 @@
+body {
+  margin: 0;
+  padding: 0;
+  background: black;
+}
+.box {
+  display: flex-box;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: calc(4720px / 8);
+  height: 780px;
+  background: url(spritesheet-60.png);
+  animation: animate 0.7s steps(8) infinite;
+}
+@keyframes animate {
+  from {
+    background-position: 0;
+  }
+  to {
+    background-position: 4720px;
+  }
+}
+.play {
+  padding-top: 20px;
+  margin-top: -60px;
+  display: flex-box;
+  margin-left: 150px;
+}
+@media (max-width: 540px) {
+  .play {
+    padding-top: 50px;
+    margin-top: -400px;
+    display: flex-box;
+    margin-left: -40px;
+    margin-bottom: 120px;
+  }
+  .box {
+    display: flex-box;
+    position: absolute;
+    top: 48%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: calc(1815px / 8);
+    height: 300px;
+    background: url(spritesheet-65.png);
+    animation: animate 0.7s steps(8) infinite;
+  }
+  @keyframes animate {
+    from {
+      background-position: 0;
+    }
+    to {
+      background-position: 1815px;
+    }
+  }
+}
