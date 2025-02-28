@@ -4,14 +4,53 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Animation Amelia anã</title>
+  <title> Amelia anã Animation</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  
-  <div class="box">
-    <audio class="play" controls autoplay loop  src="amelia-watsonss.mp3" type="audio" >
-  </audio>
+  <div class="box"></div>
+
+  <div class="audio-controls">
+    <button id="musicToggle">music: off</button>
+    <input type="range" id="volumeControl" min="0" max="1" step="0.1" value="0.5">
   </div>
+   
+  
+  <audio id="ameliaTheme" loop>
+    <source src="amelia-watsonss.mp3" type="audio/mp3">
+  </audio>
+
+
+<script>
+
+const tetrisTheme = document.getElementById('ameliaTheme');
+const musicToggle = document.getElementById('musicToggle');
+const volumeControl = document.getElementById('volumeControl');
+let isMusicPlaying = false;
+
+   // Configuração de áudio
+    ameliaTheme.volume = volumeControl.value;
+        
+        // Event listener para o botão de música
+        musicToggle.addEventListener('click', () => {
+            if (isMusicPlaying) {
+                ameliaTheme.pause();
+                musicToggle.textContent = "Música: Off";
+            } else {
+              ameliaTheme.play().catch(e => {
+                    console.log("Reprodução automática bloqueada pelo navegador. Interaja com a página primeiro.");
+                });
+                musicToggle.textContent = "Música: On";
+            }
+            isMusicPlaying = !isMusicPlaying;
+        });
+        
+        // Event listener para o controle de volume
+        volumeControl.addEventListener('input', () => {
+            tetrisTheme.volume = volumeControl.value;
+        });
+
+</script>
+
 </body>
 </html>
